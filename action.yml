@@ -56,6 +56,14 @@ inputs:
   ssh_key_pub:
     description: The public key contents to use for private repositories
     required: false
+  
+  composer_user:
+    description: Composer user
+    required: false
+
+  composer_key:
+    description: Composer key
+    required: false
 
   ssh_domain:
     description: The domain to gather SSH public keys for (automatic for github.com, gitlab.com, bitbucket.org)
@@ -91,6 +99,8 @@ runs:
         ACTION_ARGS: ${{ inputs.args }}
         ACTION_SSH_KEY: ${{ inputs.ssh_key }}
         ACTION_SSH_KEY_PUB: ${{ inputs.ssh_key_pub }}
+        ACTION_COMPOSER_USER: ${{ inputs.composer_user }}
+        ACTION_COMPOSER_KEY: ${{ inputs.composer_key }}
         ACTION_SSH_DOMAIN: ${{ inputs.ssh_domain }}
         ACTION_WORKING_DIR: ${{ inputs.working_dir }}
         ACTION_MEMORY_LIMIT: ${{ inputs.memory_limit }}
