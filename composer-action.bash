@@ -162,6 +162,11 @@ done <<<$(env)
 
 echo "::set-output name=full_command::${command_string}"
 
+if [ -n "$ACTION_COMPOSER_USER" ]
+then
+  composer config --global --auth http-basic.repo.packagist.com $ACTION_COMPOSER_USER $ACTION_COMPOSER_KEY
+fi
+
 docker run --rm \
 	--volume "${github_action_path}/composer.phar":/usr/local/bin/composer \
 	--volume ~/.gitconfig:/root/.gitconfig \
